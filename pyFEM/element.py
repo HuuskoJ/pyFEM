@@ -29,12 +29,12 @@ class Section(Protocol):
 
 @dataclass(slots=True)
 class Element:
-    n1: Node
-    n2: Node
-    section: Section
-    material: Material
+    n1: 'Node'
+    n2: 'Node'
+    section: 'Section'
+    material: 'Material'
     elem_id: int = field(init=False)
-    global_coordinate_system: CoordinateSystem = CoordinateSystem()
+    global_coordinate_system: CoordinateSystem = field(default_factory=CoordinateSystem)
     has_load: bool = False
 
     @property

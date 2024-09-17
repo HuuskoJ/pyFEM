@@ -174,44 +174,8 @@ def frame_time_test(num_elems=100, L: float = 5000) -> None:
     plotter = Plotter()
     plotter.plot_deflection(model, plot_nodes=False)
 
-
-def metku_test(num_elems=100):
-    import metku.frame2d as f2d
-
-    frame = f2d.Frame2D()
-
-    col = f2d.SteelBeam([[0, 0], [0, 5000]], num_elements=num_elems)
-    sup = f2d.FixedSupport([0, 0])
-    pl = f2d.PointLoad([0, 5000], [100e3, 0, 0])
-
-    frame.add(col)
-    frame.add(sup)
-    frame.add(pl)
-
-    frame.generate()
-    import time
-    start = time.process_time()
-    frame.calculate()
-    end = time.process_time()
-    print(f"metku: {end - start :.2f} s")
-
-def metku_frame_test(num_elems=100):
-    import metku.frame2d as f2d
-
-    frame = f2d.Frame2D(simple=[1, 1, 5000, 5000], num_elements=num_elems)
-    for beam in frame.beams:
-        ll = f2d.LineLoad(beam, [-100, -100], 'y', load_id=1)
-        frame.add(ll)
-    frame.generate()
-    import time
-    start = time.process_time()
-    frame.calculate(load_id=1)
-    end = time.process_time()
-    print(f"metku: {end - start :.2f} s")
-
-
 if __name__ == "__main__":
-    num_elements = 10
+    num_elements = 100
     #print(timeit.timeit(frame_time_test, number=10, setup=f"num_elems = {num_elements}"))
     frame_time_test(num_elements)
     #metku_frame_test(num_elements)

@@ -43,14 +43,14 @@ class LineLoad(Protocol):
 
 @dataclass
 class FEModel:
-    elements: dict[int: Element] = field(default_factory=dict)
-    supports: dict[int: Support] = field(default_factory=dict)
-    loads: dict[int: PointLoad | LineLoad] = field(default_factory=dict)
+    elements: dict[int: 'Element'] = field(default_factory=dict)
+    supports: dict[int: 'Support'] = field(default_factory=dict)
+    loads: dict[int: 'PointLoad' | 'LineLoad'] = field(default_factory=dict)
     elem_id: int = 0
     supp_id: int = 0
     load_id: int = 0
     node_id: int = 0
-    global_coordinate_system: CoordinateSystem = CoordinateSystem()
+    global_coordinate_system: CoordinateSystem = field(default_factory=CoordinateSystem)
 
     #
     # def __init__(self):

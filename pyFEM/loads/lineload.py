@@ -1,18 +1,17 @@
 from dataclasses import dataclass, field
-from pyFEM.element import Element
 import numpy as np
 
 
 @dataclass
 class LineLoad:
-    element: Element
-    qx: np.ndarray or list = np.zeros(2)
-    qy: np.ndarray or list = np.zeros(2)
-    qz: np.ndarray or list = np.zeros(2)
-    mx: np.ndarray or list = np.zeros(2)
-    my: np.ndarray or list = np.zeros(2)
-    mz: np.ndarray or list = np.zeros(2)
-    load_id: int = field(default=False, init=False)
+    element: 'Element'
+    qx: np.ndarray | list = field(default_factory=lambda: np.zeros(2))
+    qy: np.ndarray | list = field(default_factory=lambda: np.zeros(2))
+    qz: np.ndarray | list = field(default_factory=lambda: np.zeros(2))
+    mx: np.ndarray | list = field(default_factory=lambda: np.zeros(2))
+    my: np.ndarray | list = field(default_factory=lambda: np.zeros(2))
+    mz: np.ndarray | list = field(default_factory=lambda: np.zeros(2))
+    load_id: int = field(default=0, init=False)
 
     @property
     def load_vector(self):

@@ -73,5 +73,5 @@ def global_stiffness_matrix(rows: np.array, cols: np.array, data_K: np.array) ->
              (rows.flatten(),
               cols.flatten())
              ),
-            dtype=np.float_),
-        dtype=np.float_)
+            dtype=np.float64),
+        dtype=np.float64)

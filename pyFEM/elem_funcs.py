@@ -1,6 +1,4 @@
 import numpy as np
-
-# from numba import njit
 from pyFEM.coordinate_system import CoordinateSystem
 
 
@@ -12,8 +10,9 @@ def unit_vector(vector: np.ndarray) -> np.ndarray:
     return vector / np.linalg.norm(vector)
 
 
-def line_length(p1: np.array, p2:np.array) -> float:
+def line_length(p1: np.array, p2: np.array) -> float:
     return np.linalg.norm(p1, p2)
+
 
 def local_stiffness_matrix(E: float, A: float, G: float, Iy: float, Iz: float,
                            J: float, L: float) -> np.ndarray:
@@ -112,8 +111,8 @@ def direction_cosine_matrix(local_coordinate_system: CoordinateSystem,
                             global_coordinate_system: CoordinateSystem) -> np.ndarray:
     """
     Calculates direction cosine matrix
-    :param l_system:
-    :param g_system:
+    :param local_coordinate_system:
+    :param global_coordinate_system:
     :return:
     """
     lx = direction_cosine(local_coordinate_system.X, global_coordinate_system.X)
