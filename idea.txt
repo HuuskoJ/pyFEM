@@ -1,0 +1,10 @@
+
+
+
+# Preprocessor
+    - muodostaa FEM-verkon ja jäykkyysmatriisit
+# Solver
+    - laskee tulokset
+        - esim. epälin analyysi, stabiliteettianalyysi yms
+# Postprocessor
+    - tallentaa laskentatulokset
